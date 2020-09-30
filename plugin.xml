@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-starprnt" version="2.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>StarPRNT</name>
+	<description>Plugin to use Star printers and connected drawer</description>
+	<author>Jose Angarita / Ruben Casas</author>
+	<keywords>print,starmicronics,star printer</keywords>
+	<license>MIT</license>
+	<engines>
+    	<engine name="cordova" version=">=3.4.0"/>
+  	</engines>
+	<js-module name="StarPRNT" src="www/StarPRNT.js">
+		<clobbers target="starprnt" />
+	</js-module>
+	<platform name="android">
+		<source-file src="src/android/StarPRNT.java" target-dir="src/starprnt/cordova" />
+		<!-- Using StarPRNT_Android_SDK_V5_5_0  -->
+		<source-file src="src/android/lib/StarIOPort3.1.jar" target-dir="libs" />
+		<source-file src="src/android/lib/starioextension.jar" target-dir="libs" />
+		<config-file target="res/xml/config.xml" parent="/*">
+		<feature name="StarPRNT">
+			<param name="android-package" value="starprnt.cordova.StarPRNT" />
+		</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/*" />
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+		<uses-permission android:name="android.permission.BLUETOOTH" />
+		</config-file>
+  	</platform>
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="StarPRNT">
+				<param name="ios-package" value="StarPRNT" />
+			</feature>
+		</config-file>		
+		<config-file target="*-Info.plist" parent="UISupportedExternalAccessoryProtocols">
+	    <array>
+        <string>jp.star-m.starpro</string>
+	    </array>
+		</config-file>
+		<config-file target="*-Info.plist" parent="NSBluetoothPeripheralUsageDescription">
+      <string>To connect to Star Micronic's Devices</string>
+	  </config-file>
+		<header-file src="src/ios/Communication.h" />
+		<source-file src="src/ios/Communication.m" />
+		<header-file src="src/ios/StarPRNT.h" />
+		<source-file src="src/ios/StarPRNT.m" />
+		<!-- Using StarPRNT_iOS_SDK_V5_5_0  -->
+		<framework src="./frameworks/StarIO.framework" custom="true"/>
+		<framework src="./frameworks/StarIO_Extension.framework" custom="true"/>
+		<framework src="CoreBluetooth.framework"/>
+		<framework src="ExternalAccessory.framework"/>
+	</platform>
+</plugin>
