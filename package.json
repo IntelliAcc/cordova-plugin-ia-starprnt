@@ -1,0 +1,19 @@
+{
+    "name": "cordova-plugin-ia-starprnt",
+    "version": "1.0.0",
+    "description": "StarPRNT Cordova Plugin for Star Micronics Bluetooth/LAN printers",
+    "cordova": {
+      "id": "cordova-plugin-ia-starprnt",
+      "platforms": [
+        "android",
+        "ios"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/NicolaasZA/cordova-plugin-ia-starprnt"
+    },
+    "license": "MIT",
+    "author": "Jose Angarita / Ruben Casas / Nicolaas Pretorius"
+    
+  }
